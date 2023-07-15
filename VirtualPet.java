@@ -85,4 +85,10 @@ public class VirtualPet {
         if(getHunger()<=17){setHunger(hunger + 3);};
     }
 
+    public void tick(){
+        if(getHunger()<=18)setHunger(hunger +2);
+        if(getBoredom()<=18)setBoredom(boredom +2);
+        if(getTiredness()<=18)setTiredness(tiredness +2);
+    }
+
 }
