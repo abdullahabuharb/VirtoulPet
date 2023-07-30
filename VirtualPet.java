@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class VirtualPet {
     private int hunger;
     private int thirst;
@@ -81,4 +83,12 @@ public class VirtualPet {
         if(getThirst()<=44){setThirst(thirst + 5);};
         if(getHunger()<=44){setHunger(hunger + 5);}
     }
+    public int randomValues(){
+        Random random = new Random();
+        int min = 10, max = 50;
+        int randomNumber = random.nextInt(max - min + 1) + min; 
+        return randomNumber;
+    }
+    
+    
 }

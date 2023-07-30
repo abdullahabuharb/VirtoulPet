@@ -17,6 +17,11 @@ public class VirtualPetShelter extends VirtualPet{
     public  Collection<VirtualPet> returnAllPets(){
         return allPets.values();
     }
+    public void returnPetsName(){
+        for(String key:allPets.keySet()){
+            System.out.println(key);
+        }
+    }
     
         public VirtualPet getPetName(String name){
             return allPets.get(name);
@@ -24,6 +29,7 @@ public class VirtualPetShelter extends VirtualPet{
         public void addPets(VirtualPet pet){
             allPets.put(pet.getName(),pet);
         }
+        
         public void removePet(VirtualPet pet){
             allPets.remove(pet.getName(), pet);
         }

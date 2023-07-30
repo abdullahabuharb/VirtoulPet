@@ -1,4 +1,4 @@
-import java.util.Random;
+
 import java.util.Scanner;
 
 public class VirtualPetShelterApp  {
@@ -6,47 +6,37 @@ public class VirtualPetShelterApp  {
 
     public static void main(String[] args) {
         
-        Random random = new Random();
-        int min = 10, max = 50;
-        int randomNum1 = random.nextInt(max - min + 1) + min;
-        int randomNum2 = random.nextInt(max - min + 1) + min;
-        int randomNum3 = random.nextInt(max - min + 1) + min;
-        int randomNum4 = random.nextInt(max - min + 1) + min;
-        int randomNum5 = random.nextInt(max - min + 1) + min;
-        int randomNum6 = random.nextInt(max - min + 1) + min;
-        int randomNum7 = random.nextInt(max - min + 1) + min;
-        int randomNum8 = random.nextInt(max - min + 1) + min;
-        int randomNum9 = random.nextInt(max - min + 1) + min;
-        int randomNum10 = random.nextInt(max - min + 1) + min;
-        int randomNum11 = random.nextInt(max - min + 1) + min;
-        int randomNum12 = random.nextInt(max - min + 1) + min;
-        int randomNum13 = random.nextInt(max - min + 1) + min;
-        int randomNum14 = random.nextInt(max - min + 1) + min;
-        int randomNum15 = random.nextInt(max - min + 1) + min;
-        
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
+        Scanner scanner3 = new Scanner(System.in);
         int userInput;
         String userInput1,userInput2;
+        VirtualPetShelter pets =new VirtualPetShelter("", "");
         
-        VirtualPetShelter pet1 =new VirtualPetShelter("Joey","smells like a Stargazer lily fresh with morning dew");
-        pet1.setHunger(randomNum1);
-        pet1.setThirst(randomNum2);
-        pet1.setBoredom(randomNum3);
+        VirtualPet pet1 =new VirtualPet("Joey","smells like a Stargazer lily fresh with morning dew");
+        pet1.setHunger(pet1.randomValues());
+        pet1.setThirst(pet1.randomValues());
+        pet1.setBoredom(pet1.randomValues());
+        pets.addPets(pet1);
+
         
-        VirtualPetShelter pet2 =new VirtualPetShelter("Johnny","cute curly hair");
-        pet2.setHunger(randomNum4);
-        pet2.setThirst(randomNum5);
-        pet2.setBoredom(randomNum6);
+        VirtualPet pet2 =new VirtualPet("Johnny","cute curly hair");
+        pet2.setHunger(pet2.randomValues());
+        pet2.setThirst(pet2.randomValues());
+        pet2.setBoredom(pet2.randomValues());
+        pets.addPets(pet2);
         
-        VirtualPetShelter pet3= new VirtualPetShelter("Dee","very small but strong");
-        pet3.setHunger(randomNum7);
-        pet3.setThirst(randomNum8);
-        pet3.setBoredom(randomNum9);
+        VirtualPet pet3= new VirtualPet("Dee","very small but strong");
+        pet3.setHunger(pet3.randomValues());
+        pet3.setThirst(pet3.randomValues());
+        pet3.setBoredom(pet3.randomValues());
+        pets.addPets(pet3);
         
-        VirtualPetShelter pet4=new VirtualPetShelter("Tommy","soft skin");
-        pet4.setHunger(randomNum10);
-        pet4.setThirst(randomNum11);
-        pet4.setBoredom(randomNum12);
+        VirtualPet pet4=new VirtualPet("Tommy","soft skin");
+        pet4.setHunger(pet4.randomValues());
+        pet4.setThirst(pet4.randomValues());
+        pet4.setBoredom(pet4.randomValues());
+        pets.addPets(pet4);
         
         System.out.println("welcome to virtual pet shelter");
         
@@ -62,17 +52,17 @@ public class VirtualPetShelterApp  {
             "2.Water the pets\n"+"3.Play with a pet\n"+"4.Adopt a pet\n"+"5.Admit a pet\n"+"6.Quit");
             userInput = scanner.nextInt();
             if(userInput == 1){
-                pet1.feedAllPets();
-                pet1.tick2();
+                pets.feedAllPets();
+                pets.tick2();
             }
             if(userInput == 2){
-                pet1.waterAllPets();
-                pet1.tick2();
+                pets.waterAllPets();
+                pets.tick2();
             }
             if(userInput == 3){
                 System.out.println("please choose one of the pets");
-                pet1.returnAllPets();
-                userInput1=scanner.nextLine();
+                pets.returnPetsName();
+                userInput1=scanner2.nextLine();
                 if(userInput1.equalsIgnoreCase("Joey")){
                     System.out.println("ok,you play with Joey");
                     pet1.play();}
@@ -89,45 +79,61 @@ public class VirtualPetShelterApp  {
                     pet4.play();
                 }
                 else{
-                    System.out.println("Sorry there is no pet with this name ");
+                    System.out.println("Sorry there is no pet with this name \n"+"pets in shelter\n");
+                    pets.returnPetsName();
                 }
-                pet1.tick2();
+                pets.tick2();
             }
             if(userInput == 4){
-                System.out.println("what is the name of the pet");
-                userInput1=scanner.nextLine();
+                System.out.println("choose one of the pets");
+                pets.returnPetsName();
+                userInput1=scanner3.nextLine();
                 if(userInput1.equalsIgnoreCase("Joey")){
-                    pet1.removePet(pet1);}
+                    pets.removePet(pet1);
+                System.out.println("Joey has removed\n");
+                pets.returnPetsName();}
                 if(userInput1.equalsIgnoreCase("Johnny")){
-                    pet2.removePet(pet2);
+                    pets.removePet(pet2);
+                    System.out.println("Johnny has removed\n");
+                    pets.returnPetsName();
                 }
                 if(userInput1.equalsIgnoreCase("Dee")){
-                    pet3.removePet(pet3);
+                    pets.removePet(pet3);
+                    System.out.println("Dee has removed\n");
+                    pets.returnPetsName();
                 }
                 if(userInput1.equalsIgnoreCase("Tommy")){
-                    pet4.removePet(pet4);
+                    pets.removePet(pet4);
+                    System.out.println("Tommy has removed\n");
+                    pets.returnPetsName();
                 }
                 else{
                     System.out.println("Sorry there is no pet with this name ");
                 }
-                pet1.tick2();
+                pets.tick2();
             }
             if(userInput == 5){
                 System.out.println("what is the pet name?");
-                userInput1=scanner.nextLine();
+                userInput1=scanner2.nextLine();
                 System.out.println("what is the pet description?");
-                userInput2=scanner.nextLine();
-                VirtualPetShelter pet5 =new VirtualPetShelter(userInput1,userInput2);
-                pet5.setHunger(randomNum13);
-                pet5.setThirst(randomNum14);
-                pet5.setBoredom(randomNum15);
-                pet5.addPets(pet5);
-                pet1.tick2();
+                userInput2=scanner3.nextLine();
+                System.out.println(userInput1 +" has been added to Shelter");
+                VirtualPet pet5 =new VirtualPet(userInput1,userInput2);
+                pet5.setHunger(pet5.randomValues());
+                pet5.setThirst(pet5.randomValues());
+                pet5.setBoredom(pet5.randomValues());
+                pets.addPets(pet5);
+                System.out.println("shelter pets");
+                pets.returnPetsName();
+                pets.tick2();
             }
             if(userInput == 6){
                 i=false;
             }
     
-    }scanner.close();
+    }
+    scanner.close();
+    scanner2.close();
+    scanner3.close();
     }
 }
