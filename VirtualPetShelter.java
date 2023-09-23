@@ -1,3 +1,4 @@
+package VirtualPet;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ public class VirtualPetShelter extends VirtualPet{
         super(name,description);
     }
     Map<String,VirtualPet> allPets=new HashMap<>() ;
+    Map<String,VirtualRobotic> allRobotic=new HashMap<>() ;
     
     public  Collection<VirtualPet> returnAllPets(){
         return allPets.values();
@@ -29,9 +31,15 @@ public class VirtualPetShelter extends VirtualPet{
         public void addPets(VirtualPet pet){
             allPets.put(pet.getName(),pet);
         }
+        public void addRobotic(VirtualRobotic pet){
+            allRobotic.put(pet.getName(),pet);
+        }
         
         public void removePet(VirtualPet pet){
             allPets.remove(pet.getName(), pet);
+        }
+        public void removeRobotic(VirtualRobotic pet){
+            allRobotic.remove(pet.getName(), pet);
         }
         public void feedAllPets(){
             for(VirtualPet pet:allPets.values())
@@ -43,10 +51,22 @@ public class VirtualPetShelter extends VirtualPet{
         }
         public void playWithPet(){
             for(VirtualPet pet:allPets.values())
-            pet.play();
+            pet.walk();
         }
         public void tick2(){
             tick();
+        }
+        public void oilingAllRobotic(){
+            for(VirtualRobotic pet:allRobotic.values())
+            pet.oiling();
+        }
+        public void emptyingAllLitterBox(){
+            for(VirtualRobotic pet:allRobotic.values())
+            pet.emptyingLitterBox();
+        }
+        public void cleanCages(){
+            for(VirtualRobotic pet:allRobotic.values())
+            pet.cleanWaste();
         }
     
 
